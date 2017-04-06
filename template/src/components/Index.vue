@@ -2,7 +2,7 @@
   <q-layout>
     <div slot="header" class="toolbar">
       <q-toolbar-title :padding="0">
-        Quasar Framework v{{$q.version}}
+        Quasar + Express boilerplate
       </q-toolbar-title>
     </div>
 
@@ -12,82 +12,50 @@
       if using subRoutes
     -->
     <div class="layout-view">
-      <div class="logo-container non-selectable no-pointer-events">
-        <div class="logo" :style="position">
-          <img src="~assets/quasar-logo.png">
-          <p class="caption text-center">
-            <span class="desktop-only">Move your mouse.</span>
-            <span class="touch-only">Touch screen and move.</span>
-          </p>
-        </div>
-      </div>
+      <h1>Express routes</h1>
+      <ul>
+        <li>GET <a v-on:click="getUser()">/api/users</a></li>
+        <li>GET <a v-on:click="getUser(1)">/api/users/1</a></li>
+        <li>GET <a v-on:click="getUser(4)">/api/users/4</a></li>
+        <li>GET <a v-on:click="getUser('1..3')">/api/users/1..3</a></li>
+        <li>GET <a v-on:click="getUser('1..3.json')">/api/users/1..3.json</a></li>
+        <li>DELETE <a v-on:click="deleteUser(4)">/api/users/4</a></li>
+      </ul>
+      <h1>Express response</h1>
+      <textarea v-model="response" readonly class="full-width"></textarea>
     </div>
   </q-layout>
 </template>
 
 <script>
-var moveForce = 30
-var rotateForce = 40
-
-import { Utils } from 'quasar'
 
 export default {
   data () {
     return {
-      moveX: 0,
-      moveY: 0,
-      rotateY: 0,
-      rotateX: 0
+      response: ''
     }
   },
   computed: {
-    position () {
-      let transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg)`
-      return {
-        top: this.moveY + 'px',
-        left: this.moveX + 'px',
-        '-webkit-transform': transform,
-        '-ms-transform': transform,
-        transform
-      }
-    }
   },
   methods: {
-    move (event) {
-      const {width, height} = Utils.dom.viewport()
-      const {top, left} = Utils.event.position(event)
-      const halfH = height / 2
-      const halfW = width / 2
-
-      this.moveX = (left - halfW) / halfW * -moveForce
-      this.moveY = (top - halfH) / halfH * -moveForce
-      this.rotateY = (left / width * rotateForce * 2) - rotateForce
-      this.rotateX = -((top / height * rotateForce * 2) - rotateForce)
+    getUser (id) {
+      this.users.get({id: id}).then(response => {
+        this.$data.response = JSON.stringify(response.body)
+      })
+    },
+    deleteUser (id) {
+      this.users.delete({id: id}).then(response => {
+        this.$data.response = JSON.stringify(response.body)
+      })
     }
   },
   mounted () {
-    this.$nextTick(() => {
-      document.addEventListener('mousemove', this.move)
-      document.addEventListener('touchmove', this.move)
-    })
+    this.users = this.$resource('api/users{/id}')
   },
   beforeDestroy () {
-    document.removeEventListener('mousemove', this.move)
-    document.removeEventListener('touchmove', this.move)
   }
 }
 </script>
 
 <style lang="styl">
-.logo-container
-  width 192px
-  height 268px
-  perspective 800px
-  position absolute
-  top 50%
-  left 50%
-  transform translateX(-50%) translateY(-50%)
-.logo
-  position absolute
-  transform-style preserve-3d
 </style>
