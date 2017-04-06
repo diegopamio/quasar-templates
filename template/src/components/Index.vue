@@ -56,7 +56,7 @@
         </q-toolbar-title>
       </div>
 
-      <q-drawer-link icon="home" to="/chat">Home</q-drawer-link>
+      <q-drawer-link icon="home" to="/home">Home</q-drawer-link>
       <q-drawer-link icon="chat" to="/chat">Chat</q-drawer-link>
 
       <q-collapsible icon="info" label="About">
