@@ -5,6 +5,10 @@
 
 Extend the [default Quasar app template](https://github.com/quasarframework/quasar-template-default) with a basic app skeleton including authentication (login/logout/register) and a real-time chat feature.
 
+[![Authentication video](https://img.youtube.com/vi/_iqnjpQ9gRo/0.jpg)](https://www.youtube.com/watch?v=_iqnjpQ9gRo)
+
+[![Chat video](https://img.youtube.com/vi/te1w33vaDXI/0.jpg)](https://www.youtube.com/watch?v=te1w33vaDXI)
+
 ## Usage
 
 Details to install a complete Feathers app powered by Quasar can be found here : https://github.com/quasarframework/quasar-wrapper-feathersjs-api.
