@@ -3,7 +3,7 @@
 # Quasar Framework - Feathers Demo App Template
 > Default Starter Kit for a Feathers-based app using the Quasar Framework. Compatible with Quasar v0.9+
 
-Extend the [default Quasar app template](https://github.com/quasarframework/quasar-template-default) with a basic app skeleton including authentication (login/logout/register) and a real-time chat feature.
+Extend the [default Quasar app template](https://github.com/quasarframework/quasar-template-default) with a basic app skeleton including authentication (login/logout/register) and a real-time chat feature. This template is inspired from this [tutorial](https://github.com/claustres/quasar-feathers-tutorial).
 
 [![Authentication video](https://img.youtube.com/vi/_iqnjpQ9gRo/0.jpg)](https://www.youtube.com/watch?v=_iqnjpQ9gRo)
 
