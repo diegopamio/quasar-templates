@@ -10,6 +10,9 @@ import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
 
+// Required IE 11 polyfill
+import 'babel-polyfill'
+
 Vue.use(Quasar) // Install Quasar Framework
 Vue.use(router)
 
